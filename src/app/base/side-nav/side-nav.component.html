@@ -1,0 +1,70 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" opened mode="side">
+
+    <div *ngFor='let option of menuOptions'>
+      <span (click)="selectedOption(option)" class="sidenav-icon-container">
+        <button mat-icon-button>
+          <fa class="sidenav-icon" name="{{option.icon}}"></fa>
+        </button>
+      </span>
+      <span *ngIf="showFiller" class="sidenav-text">{{option.text}}</span>
+    </div>
+
+    <mat-divider class="sidenav-divider"></mat-divider>
+
+
+    <div (click)="showFiller = !showFiller">
+
+
+	      <span class="sidenav-icon-container">
+        <button mat-icon-button>
+          <fa *ngIf="showFiller" class="sidenav-icon" name="fas fa-angle-left"></fa>
+          <fa *ngIf="!showFiller" class="sidenav-icon" name="fas fa-angle-right"></fa>
+        </button>
+      </span>
+	  </div>
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Digital Dashboard</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span>{{selectedMenuOption.text}}</span>
+        <span class="nav-spacer"></span>
+        <span class="nav-icon">
+          <fa class="sidenav-icon" name="{{selectedMenuOption.icon}}"></fa>
+        </span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div [ngSwitch]="selectedMenuOption.index">
+    <div *ngSwitchCase="'1'">gil hadad!!!!</div>
+    <div *ngSwitchCase="'2'"><app-package-generator></app-package-generator></div>
+    <div *ngSwitchCase="'3'">sss</div>
+    <div *ngSwitchCase="'4'">fff</div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+</mat-drawer-container>
