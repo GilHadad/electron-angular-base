@@ -1,8 +1,10 @@
-import * as fsType from 'mz/fs'; /* this is used just for types! */ /* make sure NOT to use 'fsTypeVariable */
-const fs: typeof fsType = window.electron.remote.require('mz/fs');
+import {safeElectronWrapper} from './utils';
+import {fs} from './nodejs-modules';
 
-export async function foo() {
+
+export const foo = safeElectronWrapper(async function() {
   const content = await fs.readFile('./README.md', 'utf-8');
   console.log(content);
   return content;
-}
+}, 'This will only show in browser');
+
