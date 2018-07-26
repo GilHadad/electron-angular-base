@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {foo} from '../../../nodejs/fs';
 
 interface MenuOption {
   index: number;
@@ -15,6 +16,7 @@ interface MenuOption {
 })
 export class SideNavComponent implements OnInit {
   showFiller = false;
+  public readmeContent = '';
   menuOptions: MenuOption[] = [
     {index: 1, active: true, text: 'Home', icon: 'fas fa-home'},
     {index: 2, active: false, text: 'Package Generator', icon: 'fas fa-cubes'},
@@ -26,9 +28,10 @@ export class SideNavComponent implements OnInit {
 
   selectedMenuOption: MenuOption = this.menuOptions[0];
   test = 'app-package-generator';
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    foo().then(s => this.readmeContent = s);
   }
 
   selectedOption(option: MenuOption) {
